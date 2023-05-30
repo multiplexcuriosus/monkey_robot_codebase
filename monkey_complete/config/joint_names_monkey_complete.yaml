@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'Neck_Hor_Rot_Joint', 'Neck_Fro_Rot_Joint', 'R_Shoulder_Fro_Rot_Joint', 'R_Shoulder_Lat_Joint', 'R_Shoulder_Hor_Joint', 'R_Ellbow_Joint', 'R_Wrist_Joint', 'R_Hand_Joint', 'L_Shoulder_Fro_Joint', 'L_Shoulder_Lat_Joint', 'L_Shoulder_Hor_Joint', 'L_Ellbow_Joint', 'L_Hand_Joint', ]
