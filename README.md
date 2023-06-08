@@ -11,9 +11,6 @@ sudo apt install ros-noetic-rospy-message-converter
 ```
 
 
-## Necessary modifications of standard Rviz setup
-
-
 
 ## Creation of a working moveit config pkg 
 These instructions assume you have setup a catkin workspace.
@@ -65,8 +62,16 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 roslaunch <name-of-your-moveit-config> demo.launch
 ``` 
 
-Now you should see a windows popping up containing the simulation environment Rviz. It should look like this:
+Now you should see a window popping up containing the simulation environment Rviz. It should look like this:
 ![Screenshot from 2023-06-08 13-59-16](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/fbc231dd-3a55-407f-bff5-a6328b919ae9)
+
+
+
+## Modifications of standard Rviz setup
+In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, the following modifications have to be made inside of Rviz and saved.
+1. In the "Displays" panel, click on "Add". In the then appearing panel (named "Rviz"), order the visualizations "By display type", select "MarkerArray" and click "Ok". 
+
+![Screenshot from 2023-06-08 14-08-26](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/32950c11-2125-4e70-afb8-e526500a1aea)
 
 
 
