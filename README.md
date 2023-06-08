@@ -37,6 +37,7 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 6. In **Self-Collision**: Set "Sampling Density to max" and click "Generate Collision Matrix"
 7. In **Define Virtual Joints**: Create an entry according to the following picture:
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
+8. 
 
 
 
