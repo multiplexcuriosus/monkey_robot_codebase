@@ -140,8 +140,8 @@ Now follows a detailed explanation of the modes:
 - Display a blue sphere in Rviz at the coordinate of the pose goal.
 - Plan a trajectory for the selectecd planning group. This will obviously only work for the arms, not for the head.
 - Execute the trajectory. This will make the arm of the robot in the simulation go to the pose goal. The real robot will only execute this movement too if the joint_control_listener.py script is running on the raspberry pi (RPP) and the ROS environment variables have been setup correctly.
-2. Same thing as 1 but for multiple poses
-3. Once you have selected mode 3, you are directly prompted to move the eef of your chosen planning group to the first waypoint in Rviz. Recall that the way we create movements for the arms of the robot, is that we specify a list of poses (called waypoints by me) and compute a path for a specific eef to go through those waypoints. So mode 3 will let you collect waypoints for as long as you like.
+[2]: Same thing as 1 but for multiple poses
+[3]: Once you have selected mode 3, you are directly prompted to move the eef of your chosen planning group to the first waypoint in Rviz. Recall that the way we create movements for the arms of the robot, is that we specify a list of poses (called waypoints by me) and compute a path for a specific eef to go through those waypoints. So mode 3 will let you collect waypoints for as long as you like.
  
 **Important** Whenever you have moved the eef of the robot to a desired waypoint collection **you must manipulate the rotation of the interactive marker (blue sphere)**. This ensures that the last interactive marker position recorded by the monkey_interface node corresponds to the position of the hand. More details can be found in section 3.4 of my thesis. This means you must "rotate" the interactive marker by pulling at one of the three circles (red, green, blue). 
 
@@ -155,9 +155,14 @@ Now you can plan a trajectory and if the planning was successfull, execute the t
 
 In case you didn't save the waypoint collection before the trajectory execution but have changed your mind, you get a last prompt which offers to save the waypoints.
 
-4. In this mode, you can load an existing trajectory from memory. More specifically, the trajectory has to be a ROS PoseArray converted to a json file by the rospy-message-converter, and the file must be located in the source folder of your catkin workspace.
+[4]: In this mode, you can load an existing trajectory from memory. More specifically, the trajectory has to be a ROS PoseArray converted to a json file by the rospy-message-converter, and the file must be located in your catkin workspace. If you specified a name of a valid json file, it is loaded and the contained waypoints displayed in Rviz as spheres. Now you can either:
+- plan a trajectory through the loaded waypoints and then decide if you want to execute it
+- append new waypoints -> switch to mode 3
+- exit
 
+The following diagram describes the control flow of the monkey_interface.py script:
 
+![control_flow_all](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c0ea0a91-2c30-446e-bc22-1dbd28313763)
 
 
 
