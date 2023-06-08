@@ -40,7 +40,7 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
 
 8. In **Planning groups**: Create entries according to the following picture:
-9. 
+ 
 ![planning_groups_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/bfb11fae-02b0-4fc5-a143-46e951aad534)
 
 9. In **Robot Poses**: Create entries according to the following pictures:
