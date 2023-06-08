@@ -113,18 +113,18 @@ List of changes made:
 If you did everything right up until here, you should be able to drag around the hands of the robot quite freely around in space (of course only inside the space which is reachable by the robot and permitted by his joint limits). If you can't drag around the hands, it might help to untick and retick the "Approximate IK solutions" box. This setting seems to deactivate itself sometimes. 
 
 
-## Dwonload and build monkey_interface ##
+## Download and build the monkey_interface ##
 1. From this repo, download the folder "monkey_interface" and place it in the "src" folder of your catkin ws
 2. Run ```catkin build monkey_interface``` to build the package.
 3. If you haven't done so already, run ```caktin build ``` in the src folder, to build all packages. This will take about 10min (if you never build them before).
 
-## Setup monkey_interface ##
+## Setup the monkey_interface ##
 1. Open your catkin ws in two different terminals and source it in both.
 2. In the first terminal run ```roslaunch <name-of-your-moveit-config> demo.launch```. Rviz should open. 
 3. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
 4. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
 
-## Use monkey_interface ##
+## Use the monkey_interface ##
 Through the shell you can select one of the following actions, which I will call "modes":
 ```
 [1]  Display the (hard coded) single pose goal
@@ -139,7 +139,15 @@ Through the shell you can select one of the following actions, which I will call
 - Plan a trajectory for the selectecd planning group. This will obviously only work for the arms, not for the head.
 - Execute the trajectory. This will make the arm of the robot in the simulation go to the pose goal. The real robot will only execute this movement too if the joint_control_listener.py script is running on the raspberry pi and the ROS environment variables have been setup correctly.
 2. Same thing as 1 but for multiple poses
-3. Once you have selected mode 3, you are directly prompted to move the eef of your chosen planning group to the first waypoint in Rviz. Recall that the way we create movements for the arms of the robot, is that we specify a list of poses (called waypoints by me) and compute a path for a specific eef to go through those waypoints. So mode 3 will let you collect waypoints for as long as you like. **Important** Whenever you have moved the eef of the robot to a 
+3. Once you have selected mode 3, you are directly prompted to move the eef of your chosen planning group to the first waypoint in Rviz. Recall that the way we create movements for the arms of the robot, is that we specify a list of poses (called waypoints by me) and compute a path for a specific eef to go through those waypoints. So mode 3 will let you collect waypoints for as long as you like.
+ 
+**Important** Whenever you have moved the eef of the robot to a desired waypoint collection **you must manipulate the rotation of the interactive marker (blue sphere)**. The reason for this is explained in section 3.4 of my thesis. This means you must "rotate" the interactive marker by pulling at one of the three circles (red, green, blue). 
+
+![Screenshot from 2023-06-08 15-01-51](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/6f732623-7db9-4f73-82b8-45f0a5802f8f)
+
+If you don't manipulate the interactive marker, there is a high probabilty that the waypoint you save is outside the reachable space of the robot. This will then make it impossible to compute a trajectory. To prevent this from happening, a IK validty check is done for each newly added waypoint. It checks whether the newly set waypoint is in the reachable space of the robot by setting the new waypoint as a pose goal and trying to compute a trajectory to reach it. 
+
+
 
 
 
