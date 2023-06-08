@@ -50,8 +50,21 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 ![eef_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/67d41e35-fa33-42ad-b33a-849618700e0c)
 
 11. In **Author Information**, type in a name and a valid email, otherwise we can't save the config 
-12. In **Configuration Files**, specify the name of the package and place it in the source folder of your catkin workspace, e.g ```/home/testbt/ws_moveit/src/handover_test_moveit_config```
+12. In **Configuration Files**, specify the name of the package and place it in the source folder of your catkin workspace, e.g ```/home/<user>/ws_moveit/src/<name-of-your-moveit-config>```
 13. Click "Generate Package" 
+14. Now we need to build the moveit config package. To do that, open your catkin ws in a terminal and run:
+ ```
+ source devel/setup.bash
+ catkin build <name-of-your-moveit-config>
+ ``` 
+16. In order to test the freshly generated config package, run (in the same terminal as before):
+
+```
+roslaunch <name-of-your-moveit-config> demo.launch
+``` 
+
+Now you should see a windows popping up containing the simulation environment Rviz. It should look like this:
+![Screenshot from 2023-06-08 13-59-16](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/fbc231dd-3a55-407f-bff5-a6328b919ae9)
 
 
 
