@@ -44,7 +44,11 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 ![Screenshot from 2023-06-08 13-42-08](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/229191b2-0624-47ec-8534-6de6b541d00c)
 ![Screenshot from 2023-06-08 13-43-14](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/11759217-dc7c-43cf-b7c4-5f5431a7c3ce)
 ![Screenshot from 2023-06-08 13-44-13](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/43201653-b480-4239-a40e-ad5f28059e59)
-Resulting in:
+10. In **End Effectors**: Create entries according to the following picture:
+![eef_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/67d41e35-fa33-42ad-b33a-849618700e0c)
+11. In **Author Information**, type in a name and a valid email, otherwise we can't save the config 
+12. In **Configuration Files**, specify the name of the package and place it in the source folder of your catkin workspace, e.g ```/home/testbt/ws_moveit/src/handover_test_moveit_config```
+13. Click "Generate Package" 
 
 
 
