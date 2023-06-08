@@ -35,9 +35,16 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 4. Click on "Browse" and select your URDF file 
 5. Click on "Load Files"
 6. In **Self-Collision**: Set "Sampling Density to max" and click "Generate Collision Matrix"
-7. In **Define Virtual Joints**: Create an entry according to the following picture:
+7. In **Virtual Joints**: Create an entry according to the following picture:
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
 8. In **Planning groups**: Create entries according to the following picture:
 
 ![planning_groups_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/bfb11fae-02b0-4fc5-a143-46e951aad534)
+9. In **Robot Poses**: Create entries according to the following pictures:
+![Screenshot from 2023-06-08 13-42-08](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/229191b2-0624-47ec-8534-6de6b541d00c)
+![Screenshot from 2023-06-08 13-43-14](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/11759217-dc7c-43cf-b7c4-5f5431a7c3ce)
+![Screenshot from 2023-06-08 13-44-13](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/43201653-b480-4239-a40e-ad5f28059e59)
+Resulting in:
+
+
 
