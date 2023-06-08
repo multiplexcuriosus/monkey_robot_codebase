@@ -71,7 +71,8 @@ Now you should see a window popping up containing the simulation environment Rvi
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, the following modifications have to be made inside of Rviz and saved.
 1. In the "Displays" panel, click on "Add". In the then appearing panel (named "Rviz"), order the visualizations "By display type", select "MarkerArray" and click "Ok". 
 
-![Screenshot from 2023-06-08 14-08-26](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/32950c11-2125-4e70-afb8-e526500a1aea | width=100)
+<img src="https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c7b48752-9687-4233-907a-78f788a528e0" width="200">
+
 
 
 
