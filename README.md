@@ -29,5 +29,13 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
   ```
   
 2. Launch the moveit setup assistant with ``` roslaunch moveit_setup_assistant setup_assistant.launch```. Note that this will only work if:
-- you have followed all of the setups steps described [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html)
+- you have installed and setup moveit according to this [tutorial](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html)
+- you have sourced your workspace with ```source devel/setup.bash```
+3. In the setup assistant, select "Create New Moveit Configuration Package"
+4. Click on "Browse" and select your URDF file 
+5. Click on "Load Files"
+6. The following things should be configured in the setup assistant:
+  A. Self-Collisions
+  
+
 
