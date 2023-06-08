@@ -109,6 +109,21 @@ List of changes made:
 - changed "kinematics_solver_search_resolution" to 0.01 for each planning group
 
 
+## Quick test ##
+If you did everything right up until here, you should be able to drag around the hands of the robot quite freely around in space (of course only inside the space which is reachable by the robot and permitted by his joint limits). If you can't drag around the hands, it might help to untick and retick the "Approximate IK solutions" box. This setting seems to deactivate itself sometimes. 
+
+
+## Setup of monkey_interface ##
+1. From this repo, download the folder "monkey_interface" and place it in the "src" folder of your catkin ws
+2. Run ```catkin build monkey_interface``` to build the package.
+3. If you haven't done so already, run ```caktin build ``` in the src folder, to build all packages. This will take about 10min (if you never build them before).
+
+## Use monkey_interface ##
+1. Open your catkin ws in two different terminals and source it in both.
+2. In the first terminal run ```roslaunch <name-of-your-moveit-config> demo.launch```. Rviz should open. 
+3. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
+4. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side
+5. 
 
 
 
