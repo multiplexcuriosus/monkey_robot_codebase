@@ -35,7 +35,7 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 4. Click on "Browse" and select your URDF file 
 5. Click on "Load Files"
 6. The following things should be configured in the setup assistant:
-  A. Self-Collisions
+  1. Self-Collisions
   
 
 
