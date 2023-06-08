@@ -144,7 +144,7 @@ Through the shell you can select one of the following actions, which I will call
 Now follows a detailed explanation of the modes:
 
 [1]: In the python script you can hard code a pose goal (pose: position + orientation) and running mode 1 will:
-- Display a blue sphere in Rviz at the coordinate of the pose goal.
+- Display a (TODO) blue sphere in Rviz at the coordinate of the pose goal.
 - Plan a trajectory for the selectecd planning group. This will obviously only work for the arms, not for the head.
 - Execute the trajectory. This will make the arm of the robot in the simulation go to the pose goal. The real robot will only execute this movement too if the joint_control_listener.py script is running on the raspberry pi (RPP) and the ROS environment variables have been setup correctly.
 [2]: Same thing as 1 but for multiple poses
