@@ -27,4 +27,7 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
         <child link="base_link"/>
     </joint>
   ```
+  
+2. Launch the moveit setup assistant with ``` roslaunch moveit_setup_assistant setup_assistant.launch```. Note that this will only work if:
+- you have followed all of the setups
 
