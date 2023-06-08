@@ -71,7 +71,43 @@ Now you should see a window popping up containing the simulation environment Rvi
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, the following modifications have to be made inside of Rviz and saved.
 1. In the "Displays" panel, click on "Add". In the then appearing panel (named "Rviz"), order the visualizations "By display type", select "MarkerArray" and click "Ok". 
 
-<img src="https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c7b48752-9687-4233-907a-78f788a528e0" width="500">
+<img src="https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c7b48752-9687-4233-907a-78f788a528e0" width="400">
+
+2. In the MotionPlanning Panel, tick the tickbox labeled "Approximate IK solutions". Without that enabled, we cannot manipulate the end effectors of the robots amrs. 
+3. Press "CTRL+S" to save the current Rviz config
+
+## Modifications of standard kinematics config
+In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, a few modifications have to be made to the **Kinematics.yaml** file, which can be found in the "config" folder of your moveit-config-pkg. The file should look as follows:
+```yaml
+monkey_left_arm:
+  kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+  kinematics_solver_search_resolution: 0.01
+  kinematics_solver_timeout: 0.005
+  goal_joint_tolerance: 0.0001
+  goal_position_tolerance: 0.0001
+  goal_orientation_tolerance: 0.001
+  position_only_ik: True
+monkey_right_arm:
+  kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+  kinematics_solver_search_resolution: 0.01
+  kinematics_solver_timeout: 0.005
+  goal_joint_tolerance: 0.0001
+  goal_position_tolerance: 0.0001
+  goal_orientation_tolerance: 0.001
+  position_only_ik: True
+monkey_head:
+  kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+  kinematics_solver_search_resolution: 0.01
+  kinematics_solver_timeout: 0.005
+  goal_joint_tolerance: 0.0001
+  goal_position_tolerance: 0.0001
+  goal_orientation_tolerance: 0.001
+  position_only_ik: True
+```
+List of changes made:
+- added line ```position_only_ik: True``` to each planning group
+- changed "kinematics_solver_search_resolution" to 0.01 for each planning group
+
 
 
 
