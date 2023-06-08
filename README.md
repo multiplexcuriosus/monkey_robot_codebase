@@ -29,5 +29,5 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
   ```
   
 2. Launch the moveit setup assistant with ``` roslaunch moveit_setup_assistant setup_assistant.launch```. Note that this will only work if:
-- you have followed all of the setups steps described [https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html "here"]
+- you have followed all of the setups steps described [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html)
 
