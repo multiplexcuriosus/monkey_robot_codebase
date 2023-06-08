@@ -34,8 +34,7 @@ Make sure that your URDF contains the following lines below ```<robot name="monk
 3. In the setup assistant, select "Create New Moveit Configuration Package"
 4. Click on "Browse" and select your URDF file 
 5. Click on "Load Files"
-6. The following things should be configured in the setup assistant:
-  1. Self-Collisions
-  
+6. In **Self-Collision**: Set "Sampling Density to max" and click "Generate Collision Matrix"
+
 
 
