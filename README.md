@@ -113,17 +113,33 @@ List of changes made:
 If you did everything right up until here, you should be able to drag around the hands of the robot quite freely around in space (of course only inside the space which is reachable by the robot and permitted by his joint limits). If you can't drag around the hands, it might help to untick and retick the "Approximate IK solutions" box. This setting seems to deactivate itself sometimes. 
 
 
-## Setup of monkey_interface ##
+## Dwonload and build monkey_interface ##
 1. From this repo, download the folder "monkey_interface" and place it in the "src" folder of your catkin ws
 2. Run ```catkin build monkey_interface``` to build the package.
 3. If you haven't done so already, run ```caktin build ``` in the src folder, to build all packages. This will take about 10min (if you never build them before).
 
-## Use monkey_interface ##
+## Setup monkey_interface ##
 1. Open your catkin ws in two different terminals and source it in both.
 2. In the first terminal run ```roslaunch <name-of-your-moveit-config> demo.launch```. Rviz should open. 
 3. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
-4. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side
-5. 
+4. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
+
+## Use monkey_interface ##
+Through the shell you can select one of the following actions, which I will call "modes":
+```
+[1]  Display the (hard coded) single pose goal
+[2]  Display the (hard coded) trajectory
+[3]  Collect waypoints for a cartesian path
+[4]  Load and edit waypoints from a specific json file 
+[5]  Exit
+```
+
+1. In the python script you can hard code a pose goal (pose: position + orientation) and running mode 1 will:
+- Display a blue sphere in Rviz at the coordinate of the pose goal.
+- Plan a trajectory for the selectecd planning group. This will obviously only work for the arms, not for the head.
+- Execute the trajectory. This will make the arm of the robot in the simulation go to the pose goal. The real robot will only execute this movement too if the joint_control_listener.py script is running on the raspberry pi and the ROS environment variables have been setup correctly.
+2. Same thing as 1 but for multiple poses
+3. Once you have selected mode 3, you are directly prompted to move the eef of your chosen planning group to the first waypoint in Rviz. Recall that the way we create movements for the arms of the robot, is that we specify a list of poses (called waypoints by me) and compute a path for a specific eef to go through those waypoints. So mode 3 will let you collect waypoints for as long as you like. **Important** Whenever you have moved the eef of the robot to a 
 
 
 
