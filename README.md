@@ -1,5 +1,12 @@
-# robot_monkey_thesis
-Assembly and Programming of a Robot Monkey to Study Imitation Learning in Marmosets
+# Instructions for setup and usage of control interface for monkey robot created during my bachelor's thesis
+
+## Overview
+- Bachelor's thesis:  "Assembly and Programming of a Robot Monkey to Study Imitation Learning in Marmosets" (see main branch)
+- Existing documentation: The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not 
+
+ 
+
+
 
 ## Necessary installs
 - Rospy message converter 
