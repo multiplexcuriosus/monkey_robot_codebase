@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="monkey_robot">
+    <link name="world" />
+    <joint name="world_to_base_link=" type="fixed">
+    	<parent link="world"/>
+        <child link="base_link"/>
+    </joint>
+    <link name="base_link">
+        <inertial>
+            <origin xyz="6.98705116462124E-09 0.00128521070466461 0.0520295656440773" rpy="0 0 0" />
+            <mass value="0.0883290373372722" />
+            <inertia ixx="0.000141144717037961" ixy="1.04477581076833E-10" ixz="-4.83096664544425E-10" iyy="0.000149270696736634" iyz="1.02449244706016E-05" izz="1.58173066485521E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/base_link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Neck_Hor_Rot_Link">
+        <inertial>
+            <origin xyz="0.000669560657733764 7.22824268208945E-06 0.0123704106831974" rpy="0 0 0" />
+            <mass value="0.00224204689024492" />
+            <inertia ixx="1.20382101087139E-07" ixy="9.93082482397873E-12" ixz="-6.05039637813109E-09" iyy="1.91214842358204E-07" iyz="1.18376847836872E-10" izz="1.22105776114293E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/Neck_Hor_Rot_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/Neck_Hor_Rot_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Neck_Hor_Rot_Joint" type="revolute">
+        <origin xyz="0 -0.01 0.1538" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="Neck_Hor_Rot_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.571" upper="1.571" effort="1" velocity="1" />
+    </joint>
+    <link name="Neck_Fro_Rot_Link">
+        <inertial>
+            <origin xyz="0.000242400751746984 -0.0003800741587503 0.00633594131736323" rpy="0 0 0" />
+            <mass value="0.00176240827004742" />
+            <inertia ixx="7.60273983420826E-08" ixy="-1.62368191193238E-10" ixz="3.18161828212279E-09" iyy="7.41393158959736E-08" iyz="4.96038484363031E-09" izz="6.14795776087857E-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/Neck_Fro_Rot_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/Neck_Fro_Rot_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Neck_Fro_Rot_Joint" type="revolute">
+        <origin xyz="0 0 0.0245" rpy="0 0 0" />
+        <parent link="Neck_Hor_Rot_Link" />
+        <child link="Neck_Fro_Rot_Link" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="0.5236" effort="1" velocity="1" />
+    </joint>
+    <link name="R_Shoulder_Link">
+        <inertial>
+            <origin xyz="0.0123586237459188 5.88234091172292E-06 0.000668461177534746" rpy="0 0 0" />
+            <mass value="0.00224572738283052" />
+            <inertia ixx="1.22180940017793E-07" ixy="9.83615637905777E-11" ixz="-6.0681033743057E-09" iyy="1.91407988045122E-07" iyz="9.78041242293808E-12" izz="1.20646424838584E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Shoulder_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Shoulder_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="R_Shoulder_Fro_Rot_Joint" type="revolute">
+        <origin xyz="0.0068 -0.01 0.146" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="R_Shoulder_Link" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.1763" effort="1" velocity="1" />
+    </joint>
+    <link name="R_Upper_Biceps_Link">
+        <inertial>
+            <origin xyz="0.00633593253994472 -0.000380029862493877 0.000240976983574254" rpy="0 0 0" />
+            <mass value="0.00176193451259821" />
+            <inertia ixx="6.1462803572227E-08" ixy="4.95966166731548E-09" ixz="3.18113676416E-09" iyy="7.41244544868285E-08" iyz="-1.61160868537095E-10" izz="7.60250325403049E-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Upper_Biceps_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Upper_Biceps_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="R_Shoulder_Lat_Joint" type="revolute">
+        <origin xyz="0.0245 0 0" rpy="0 0 0" />
+        <parent link="R_Shoulder_Link" />
+        <child link="R_Upper_Biceps_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.1339" upper="1.571" effort="1" velocity="1" />
+    </joint>
+    <link name="R_Lower_Biceps_Link">
+        <inertial>
+            <origin xyz="0.0123586237459188 5.88234091172118E-06 0.000668461177534718" rpy="0 0 0" />
+            <mass value="0.00224572738283052" />
+            <inertia ixx="1.22180940017793E-07" ixy="9.83615637905792E-11" ixz="-6.06810337430573E-09" iyy="1.91407988045122E-07" iyz="9.78041242294498E-12" izz="1.20646424838584E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Lower_Biceps_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Lower_Biceps_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="R_Shoulder_Hor_Joint" type="revolute">
+        <origin xyz="0.0113 0 0" rpy="0 0 0" />
+        <parent link="R_Upper_Biceps_Link" />
+        <child link="R_Lower_Biceps_Link" />
+        <axis xyz="-1 0 0" />
+        <limit lower="1.571" upper="1.571" effort="1" velocity="1" />
+    </joint>
+    <link name="R_Upper_Forearm_Link">
+        <inertial>
+            <origin xyz="0.00633593253994474 -0.000380029862493868 0.000240976983574254" rpy="0 0 0" />
+            <mass value="0.00176193451259821" />
+            <inertia ixx="6.14628035722269E-08" ixy="4.95966166731538E-09" ixz="3.18113676415999E-09" iyy="7.41244544868284E-08" iyz="-1.61160868537073E-10" izz="7.60250325403048E-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Upper_Forearm_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Upper_Forearm_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="R_Ellbow_Joint" type="revolute">
+        <origin xyz="0.0245 0 0" rpy="0 0 0" />
+        <parent link="R_Lower_Biceps_Link" />
+        <child link="R_Upper_Forearm_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.571" upper="0" effort="1" velocity="1" />
+    </joint>
+    <link name="R_Lower_Forearm_Link">
+        <inertial>
+            <origin xyz="0.0181791115365802 3.86331336988538E-06 3.0734476075267E-10" rpy="0 0 0" />
+            <mass value="0.00284451273420116" />
+            <inertia ixx="5.2909125053046E-08" ixy="1.44891782874779E-10" ixz="1.11130672919831E-14" iyy="3.41437201417628E-07" iyz="-3.22420388844467E-12" izz="3.50072065949411E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Lower_Forearm_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Lower_Forearm_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="R_Wrist_Joint" type="revolute">
+        <origin xyz="0.0113 0 0" rpy="0 0 0" />
+        <parent link="R_Upper_Forearm_Link" />
+        <child link="R_Lower_Forearm_Link" />
+        <axis xyz="-1 0 0" />
+        <limit lower="-1.571" upper="1.571" effort="1" velocity="1" />
+    </joint>
+    <link name="R_Hand_Link">
+        <inertial>
+            <origin xyz="0.00517379971053598 -1.07552855510562E-16 5.16598492172893E-06" rpy="0 0 0" />
+            <mass value="0.000391365166607116" />
+            <inertia ixx="8.7659672148119E-09" ixy="-2.93517383296693E-23" ixz="-5.78530674195544E-14" iyy="1.02180301675885E-08" iyz="1.14288950260982E-22" izz="7.65735342992188E-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Hand_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/R_Hand_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="R_Hand_Joint" type="revolute">
+        <origin xyz="0.041 0 0" rpy="0 0 0" />
+        <parent link="R_Lower_Forearm_Link" />
+        <child link="R_Hand_Link" />
+        <axis xyz="-1 0 0" />
+        <limit lower="0" upper="0" effort="0" velocity="0" />
+    </joint>
+    <link name="L_Shoulder_Link">
+        <inertial>
+            <origin xyz="-0.0123704106831975 7.22824268199231E-06 0.000669560657733603" rpy="0 0 0" />
+            <mass value="0.00224204689024492" />
+            <inertia ixx="1.22105776114293E-07" ixy="-1.18376847837409E-10" ixz="6.05039637813105E-09" iyy="1.91214842358204E-07" iyz="9.93082482451719E-12" izz="1.20382101087139E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Shoulder_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Shoulder_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="L_Shoulder_Fro_Joint" type="revolute">
+        <origin xyz="-0.0068 -0.01 0.146" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="L_Shoulder_Link" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="1.0922" effort="1" velocity="1" />
+    </joint>
+    <link name="L_Upper_Biceps_Link">
+        <inertial>
+            <origin xyz="-0.00633594131736319 -0.000380074158750071 0.000242400751746974" rpy="0 0 0" />
+            <mass value="0.00176240827004743" />
+            <inertia ixx="6.14795776087858E-08" ixy="-4.96038484363035E-09" ixz="-3.18161828212294E-09" iyy="7.41393158959736E-08" iyz="-1.62368191193327E-10" izz="7.60273983420826E-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Upper_Biceps_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Upper_Biceps_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="L_Shoulder_Lat_Joint" type="revolute">
+        <origin xyz="-0.0245 0 0" rpy="0 0 0" />
+        <parent link="L_Shoulder_Link" />
+        <child link="L_Upper_Biceps_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.5" upper="1.4616" effort="1" velocity="1" />
+    </joint>
+    <link name="L_Lower_Biceps_Link">
+        <inertial>
+            <origin xyz="-0.0123704106831975 7.22824268199578E-06 0.000669560657733603" rpy="0 0 0" />
+            <mass value="0.00224204689024492" />
+            <inertia ixx="1.22105776114293E-07" ixy="-1.1837684783739E-10" ixz="6.05039637813108E-09" iyy="1.91214842358204E-07" iyz="9.9308248244927E-12" izz="1.20382101087139E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Lower_Biceps_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Lower_Biceps_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="L_Shoulder_Hor_Joint" type="revolute">
+        <origin xyz="-0.0113 0 0" rpy="0 0 0" />
+        <parent link="L_Upper_Biceps_Link" />
+        <child link="L_Lower_Biceps_Link" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.571" upper="-1.571" effort="1" velocity="1" />
+    </joint>
+    <link name="L_Upper_Forearm_Link">
+        <inertial>
+            <origin xyz="-0.00633594131736322 -0.000380074158750361 0.000242400751746974" rpy="0 0 0" />
+            <mass value="0.00176240827004743" />
+            <inertia ixx="6.1479577608786E-08" ixy="-4.96038484363041E-09" ixz="-3.18161828212292E-09" iyy="7.41393158959737E-08" iyz="-1.62368191193308E-10" izz="7.60273983420828E-08" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Upper_Forearm_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Upper_Forearm_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="L_Ellbow_Joint" type="revolute">
+        <origin xyz="-0.0245 0 0" rpy="0 0 0" />
+        <parent link="L_Lower_Biceps_Link" />
+        <child link="L_Upper_Forearm_Link" />
+        <axis xyz="0 0 1" />
+        <limit lower="0" upper="1.571" effort="1" velocity="1" />
+    </joint>
+    <link name="L_Lower_Forearm_Link">
+        <inertial>
+            <origin xyz="-0.0181791115365802 3.86331336975181E-06 -3.0734476075267E-10" rpy="0 0 0" />
+            <mass value="0.00284451273420116" />
+            <inertia ixx="5.29091250530459E-08" ixy="-1.44891782876658E-10" ixz="1.11130673562182E-14" iyy="3.41437201417627E-07" iyz="3.22420388838765E-12" izz="3.5007206594941E-07" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Lower_Forearm_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Lower_Forearm_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="L_Wrist_Joint" type="revolute">
+        <origin xyz="-0.0113 0 0" rpy="0 0 0" />
+        <parent link="L_Upper_Forearm_Link" />
+        <child link="L_Lower_Forearm_Link" />
+        <axis xyz="1 0 0" />
+        <limit lower="-1.0085" upper="1.571" effort="1" velocity="1" />
+    </joint>
+    <link name="L_Hand_Link">
+        <inertial>
+            <origin xyz="-0.00517379971053604 1.42247325030098E-16 -5.16598492170117E-06" rpy="0 0 0" />
+            <mass value="0.000391365166607116" />
+            <inertia ixx="8.7659672148119E-09" ixy="2.48233428681096E-23" ixz="-5.78530674011555E-14" iyy="1.02180301675885E-08" iyz="-1.15427142478364E-22" izz="7.65735342992189E-09" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Hand_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://monkey_complete/meshes/L_Hand_Link_Collision.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="L_Hand_Joint" type="revolute">
+        <origin xyz="-0.041 0 0" rpy="0 0 0" />
+        <parent link="L_Lower_Forearm_Link" />
+        <child link="L_Hand_Link" />
+        <axis xyz="1 0 0" />
+        <limit lower="0" upper="0" effort="0" velocity="0" />
+    </joint>
+    <transmission name="trans_Neck_Hor_Rot_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Neck_Hor_Rot_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Neck_Hor_Rot_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_Neck_Fro_Rot_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Neck_Fro_Rot_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Neck_Fro_Rot_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_R_Shoulder_Fro_Rot_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R_Shoulder_Fro_Rot_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="R_Shoulder_Fro_Rot_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_R_Shoulder_Lat_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R_Shoulder_Lat_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="R_Shoulder_Lat_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_R_Shoulder_Hor_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R_Shoulder_Hor_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="R_Shoulder_Hor_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_R_Ellbow_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R_Ellbow_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="R_Ellbow_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_R_Wrist_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R_Wrist_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="R_Wrist_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_R_Hand_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="R_Hand_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="R_Hand_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_L_Shoulder_Fro_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="L_Shoulder_Fro_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="L_Shoulder_Fro_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_L_Shoulder_Lat_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="L_Shoulder_Lat_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="L_Shoulder_Lat_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_L_Shoulder_Hor_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="L_Shoulder_Hor_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="L_Shoulder_Hor_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_L_Ellbow_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="L_Ellbow_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="L_Ellbow_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_L_Wrist_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="L_Wrist_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="L_Wrist_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_L_Hand_Joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="L_Hand_Joint">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="L_Hand_Joint_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+
