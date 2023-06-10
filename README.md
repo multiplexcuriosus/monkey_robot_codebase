@@ -81,7 +81,9 @@ In order to have a efficient workflow and make use of all the tools and ideas co
 <img src="https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c7b48752-9687-4233-907a-78f788a528e0" width="400">
 
 2. In the MotionPlanning Panel, tick the tickbox labeled "Approximate IK solutions". Without that enabled, we cannot manipulate the end effectors of the robots arms. 
-3. Press "CTRL+S" to save the current Rviz config
+3. In the Displays Panel, go to the MotionPlanning/Planned Path rider and uncheck the tickbox "Show Robot Visual". This will deactivate the animation of the planned robot arm trajectory, which can get annoying. 
+
+4. Press "CTRL+S" to save the current Rviz config
 
 ## Modifications of standard kinematics config
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, a few modifications have to be made to the **Kinematics.yaml** file, which can be found in the "config" folder of your moveit-config-pkg. The file should look as follows:
