@@ -2,12 +2,17 @@
 
 ## Overview
 - Bachelor's thesis:  "Assembly and Programming of a Robot Monkey to Study Imitation Learning in Marmosets" (see main branch)
-- Existing documentation: The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not. For this reason, this ReadMe contains a detailed instruction on how to generate the moveit config package used during the thesis. For completeness, most of the other setup steps are described as well.
+- Existing documentation: The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not. For this reason, this ReadMe contains a detailed instruction on how to generate the moveit config package used during the thesis. For completeness, most of the other
 
 
 ## High level instructions
-
-1. Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the Raspberry Pi (RPP). The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/)
+*More detailed install instructions follow below*
+1. Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the Raspberry Pi (RPP). The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). 
+2. Setup a static IP on the RPP. Ideally you already input the SSID and password of your network into the setup process of the RPP Imager.
+3. Install ROS on the RPP 
+4. Set the ROS Environment Variables
+5. Install MoveIt on the RPP
+6. Generate a Moveit Config Package
 
 
 ## Necessary installs
