@@ -2,30 +2,48 @@
 
 ## Overview
 - Bachelor's thesis:  "Assembly and Programming of a Robot Monkey to Study Imitation Learning in Marmosets" (see main branch)
-- Existing documentation: The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not. For this reason, this ReadMe contains a detailed instruction on how to generate the moveit config package used during the thesis. For completeness, most of the other
+- Existing documentation: The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not. For this reason, this ReadMe contains a detailed instruction on how to generate the moveit config package used during the thesis. For completeness, all other setup steps are also mentioned. 
 
+
+## Abbreviations
+- Raspberry Pi (RPP)
 
 ## High level instructions
 *More detailed install instructions follow below*
-1. Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the Raspberry Pi (RPP). The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). 
-2. Setup a static IP on the RPP. Ideally you already input the SSID and password of your network into the setup process of the RPP Imager.
-3. Install ROS on the RPP 
-4. Set the ROS Environment Variables
-5. Install MoveIt on the RPP
-6. Generate a Moveit Config Package
+1. Install Ubuntu 20.04 Server on the RPP.
+2. Setup a static IP on the RPP. 
+3. Install ROS on the RPP. 
+4. Set the ROS Environment Variables.
+5. Install MoveIt on the RPP.
+6. Generate a Moveit Config Package.
 
 
-## Necessary installs
-- Rospy message converter 
-
-install with: 
-
+## Install Ubuntu 20.04 Server on the RPP
+Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the Raspberry Pi (RPP). The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). The RPP Imager will offer you to include the SSID and password of a local network in the image to be flashed. Doing that is very useful, since you can then directly ssh into the RPP after inserting the sd card with the burned image.
+ 
+## Setup a static IP on the RPP
+1. SSH into the RPP
+2. Navigate to */etc/netplan*
+3. Add a file with the following content to this directory:
 ```
-sudo apt install ros-noetic-rospy-message-converter
+network :
+    version : 2
+    wifis :
+        renderer : networkd
+        wlan0 :
+            access - points :
+                < WLAN - NAME >:
+                    password : < WLAN - PWD >
+            dhcp4 : no
+            optional : true
+            addresses :
+                - < DESIRED - IP >/24 # desired IP
+            gateway4 : < ROUTER - IP > # can be obtained with $ip r
+            nameservers :
+                addresses :
+                    - 8.8.8.8
 ```
-
-
-
+ 
 ## Creation of a working moveit config pkg 
 These instructions assume you have setup a catkin workspace.
 1. Download your valid URDF file. For the remainder of this tutorial I will use the URDF file name "monkey_robot.urdf".
@@ -179,6 +197,17 @@ In case you didn't save the waypoint collection before the trajectory execution 
 The following diagram describes the control flow of the monkey_interface.py script:
 
 ![control_flow_all](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c0ea0a91-2c30-446e-bc22-1dbd28313763)
+
+
+
+## Necessary installs
+- Rospy message converter 
+
+install with: 
+
+```
+sudo apt install ros-noetic-rospy-message-converter
+```
 
 
 
