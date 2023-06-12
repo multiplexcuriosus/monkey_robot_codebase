@@ -13,13 +13,13 @@
 1. Install Ubuntu 20.04 Server on the RPP.
 2. Setup a static IP on the RPP. 
 3. Install ROS on the RPP. 
-4. Set the ROS Environment Variables.
+4. Setup the ROS Environment Variables.
 5. Install MoveIt on the RPP.
 6. Generate a Moveit Config Package.
 
 
 ## Install Ubuntu 20.04 Server on the RPP
-Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the Raspberry Pi (RPP). The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). The RPP Imager will offer you to include the SSID and password of a local network in the image to be flashed. Doing that is very useful, since you can then directly ssh into the RPP after inserting the sd card with the burned image.
+Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the Raspberry Pi (RPP). The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). The RPP Imager will offer you to include the SSID and password of a local network in the image to be flashed, which can be useful to already set at this stage.
  
 ## Setup a static IP on the RPP
 1. SSH into the RPP
@@ -43,6 +43,21 @@ network :
                 addresses :
                     - 8.8.8.8
 ```
+ 
+## Install ROS on the RPP
+Follow the steps described [here](https://wiki.ros.org/noetic/Installation/Ubuntu). It probably suffices to install *ros-noetic-ros-base* instead of *ros-noetic-desktop-full*. The latter includes Rviz and Gazebo (simulations softwares) which are of no use on the headless RPP.
+
+## Setup the ROS Environment Variables
+```
+# for the RPP with IP - Address : < RPP_IP > execute these commands in a terminal on the RPP
+export ROS_IP = < RPP_IP >
+export ROS_MASTER_URI = http :// < RPP_IP >:11311
+
+# for the desktop PC with IP - Address : < PC_IP > execute these commands in a terminal on the PC
+export ROS_IP = < PC_IP >
+export ROS_MASTER_URI = http :// < RPP_IP >:11311
+```
+ 
  
 ## Creation of a working moveit config pkg 
 These instructions assume you have setup a catkin workspace.
