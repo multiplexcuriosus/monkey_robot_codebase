@@ -26,21 +26,21 @@ Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a 
 2. Navigate to */etc/netplan*
 3. Add a file with the following content to this directory:
 ```
-network :
-    version : 2
-    wifis :
-        renderer : networkd
-        wlan0 :
-            access - points :
-                < WLAN - NAME >:
-                    password : < WLAN - PWD >
-            dhcp4 : no
-            optional : true
-            addresses :
-                - < DESIRED - IP >/24 # desired IP
-            gateway4 : < ROUTER - IP > # can be obtained with $ip r
-            nameservers :
-                addresses :
+network:
+    version: 2
+    wifis:
+        renderer: networkd
+        wlan0:
+            access-points:
+                <WLAN-NAME>:
+                    password: <WLAN-PWD>
+            dhcp4: no
+            optional: true
+            addresses:
+                - <DESIRED-IP>/24 # desired IP
+            gateway4: <ROUTER-IP > # can be obtained with $ip r
+            nameservers:
+                addresses:
                     - 8.8.8.8
 ```
  
