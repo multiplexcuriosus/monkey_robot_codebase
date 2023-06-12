@@ -48,22 +48,23 @@ network:
 Follow the steps described [here](https://wiki.ros.org/noetic/Installation/Ubuntu). It probably suffices to install *ros-noetic-ros-base* instead of *ros-noetic-desktop-full*. The latter includes Rviz and Gazebo (simulations softwares) which are of no use on the headless RPP.
 
 ## Setup the ROS Environment Variables
+For the RPP with IP-Address <RPP_IP> execute these commands in a terminal on the RPP.
 ```
-# for the RPP with IP - Address : < RPP_IP > execute these commands in a terminal on the RPP
-export ROS_IP = < RPP_IP >
-export ROS_MASTER_URI = http :// < RPP_IP >:11311
+export ROS_IP = <RPP_IP>
+export ROS_MASTER_URI = http://<RPP_IP>:11311
+```
+For the desktop PC with IP-Address: <PC_IP> execute these commands in a terminal on the PC.
+```
+export ROS_IP = <PC_IP>
+export ROS_MASTER_URI = http://<RPP_IP>:11311
+```
 
-# for the desktop PC with IP - Address : < PC_IP > execute these commands in a terminal on the PC
-export ROS_IP = < PC_IP >
-export ROS_MASTER_URI = http :// < RPP_IP >:11311
-```
+## Install MoveIt on the RPP
+Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the RPP. 
  
- 
-## Creation of a working moveit config pkg 
+## Generate a Moveit Config Package
 These instructions assume you have setup a catkin workspace.
-1. Download your valid URDF file. For the remainder of this tutorial I will use the URDF file name "monkey_robot.urdf".
-
-Make sure that your URDF contains the following lines below ```<robot name="monkey_robot">```:
+1. Download the URDF file "monkey_robot.urdf" from this repository. If you use a different URDF, make sure that the URDF contains the following lines below ```<robot name="NAME_OF_ROBOT">```:
 ```xml
     <link name="world" />
     <joint name="world_to_base_link=" type="fixed">
@@ -113,8 +114,9 @@ Now you should see a window popping up containing the simulation environment Rvi
 ![Screenshot from 2023-06-08 13-59-16](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/fbc231dd-3a55-407f-bff5-a6328b919ae9)
 
 
+## Additional things to do
 
-## Modifications of standard Rviz setup
+### Modifications of standard Rviz setup
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, the following modifications have to be made inside of Rviz and saved.
 1. In the "Displays" panel, click on "Add". In the then appearing panel (named "Rviz"), order the visualizations "By display type", select "MarkerArray" and click "Ok". 
 
@@ -125,7 +127,7 @@ In order to have a efficient workflow and make use of all the tools and ideas co
 
 4. Press "CTRL+S" to save the current Rviz config
 
-## Modifications of standard kinematics config
+### Modifications of standard kinematics config
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, a few modifications have to be made to the **Kinematics.yaml** file, which can be found in the "config" folder of your moveit-config-pkg. The file should look as follows:
 ```yaml
 monkey_left_arm:
@@ -158,7 +160,7 @@ List of changes made:
 - changed "kinematics_solver_search_resolution" to 0.01 for each planning group
 
 
-## Quick test ##
+### Quick test 
 If you did everything right up until here, you should be able to drag around the hands of the robot quite freely around in space (of course only inside the space which is reachable by the robot and permitted by his joint limits). If you can't drag around the hands, it might help to untick and retick the "Approximate IK solutions" box. This setting seems to deactivate itself sometimes. 
 
 
