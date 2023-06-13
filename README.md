@@ -60,8 +60,13 @@ export ROS_MASTER_URI = http://<RPP_IP>:11311
 ```
 
 ## Install MoveIt on your PC
-Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the RPP. From this point onwards I am assuming you have a catkin workspace setup, to which I will refer as "ws_moveit" from now on.
- 
+Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the RPP. From this point onwards I am assuming you have a catkin workspace setup, to which I will refer as "ws_moveit" from now on. Note that this simply means that there is a folder in your /home directory called *ws_moveit*, in which you have executed all commands listed in the tutorial mentioned above. One command which you don't have to run is the last one of these three.
+```
+cd ~/ws_moveit/src
+git clone https://github.com/ros-planning/moveit_tutorials.git -b master
+git clone https://github.com/ros-planning/panda_moveit_config.git -b noetic-devel #unnecessary
+```
+ If you run it "fatal error" will be displayed, but that is irrelevant for our purposes.
  
 ## Generate a Moveit Config Package
 These instructions assume you have setup a catkin workspace.
@@ -76,8 +81,9 @@ These instructions assume you have setup a catkin workspace.
     </joint>
   ```
 From now and I will refer to the URDF file as "monkey_robot.urdf*.
-3. Replace the  URDF file in *monkey_complete/
-5. 2. In *ws_moveit*, open a terminal and run ```catkin build monkey_complete``` to build the monkey_complete package.
+3. Replace the  URDF file *monkey_complete/urdf/monkey_complete.urdf* with monkey_robot.urdf
+4. In *ws_moveit*, open a terminal and run ```catkin build monkey_complete``` to build the monkey_complete package.
+5. Source the workspace by running ```source devel/setup.bash``` in *ws_moveit*.
 6. Launch the moveit setup assistant with ``` roslaunch moveit_setup_assistant setup_assistant.launch```. Note that this will only work if:
 - you have installed and setup moveit according to this [tutorial](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html)
 - you have sourced your workspace with ```source devel/setup.bash```
@@ -89,27 +95,27 @@ From now and I will refer to the URDF file as "monkey_robot.urdf*.
 
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
 
-8. In **Planning groups**: Create entries according to the following picture:
+12. In **Planning groups**: Create entries according to the following picture:
  
 ![planning_groups_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/bfb11fae-02b0-4fc5-a143-46e951aad534)
 
-9. In **Robot Poses**: Create entries according to the following pictures:
+13. In **Robot Poses**: Create entries according to the following pictures:
 ![Screenshot from 2023-06-08 13-42-08](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/229191b2-0624-47ec-8534-6de6b541d00c)
 ![Screenshot from 2023-06-08 13-43-14](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/11759217-dc7c-43cf-b7c4-5f5431a7c3ce)
 ![Screenshot from 2023-06-08 13-44-13](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/43201653-b480-4239-a40e-ad5f28059e59)
 
-10. In **End Effectors**: Create entries according to the following picture:
+14. In **End Effectors**: Create entries according to the following picture:
 ![eef_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/67d41e35-fa33-42ad-b33a-849618700e0c)
 
-11. In **Author Information**, type in a name and a valid email, otherwise we can't save the config 
-12. In **Configuration Files**, specify the name of the package and place it in the source folder of your catkin workspace, e.g ```/home/<user>/ws_moveit/src/<name-of-your-moveit-config>```
-13. Click "Generate Package" 
-14. Now we need to build the moveit config package. To do that, open your catkin ws in a terminal and run:
+15. In **Author Information**, type in a name and a valid email, otherwise we can't save the config 
+16. In **Configuration Files**, specify the name of the package and place it in the source folder of your catkin workspace, e.g ```/home/<user>/ws_moveit/src/<name-of-your-moveit-config>```
+17. Click "Generate Package" 
+18. Now we need to build the moveit config package. To do that, open your catkin ws in a terminal and run:
  ```
  source devel/setup.bash
  catkin build <name-of-your-moveit-config>
  ``` 
-16. In order to test the freshly generated config package, run (in the same terminal as before):
+19. In order to test the freshly generated config package, run (in the same terminal as before):
 
 ```
 roslaunch <name-of-your-moveit-config> demo.launch
@@ -118,6 +124,7 @@ roslaunch <name-of-your-moveit-config> demo.launch
 Now you should see a window popping up containing the simulation environment Rviz. It should look like this:
 ![Screenshot from 2023-06-08 13-59-16](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/fbc231dd-3a55-407f-bff5-a6328b919ae9)
 
+Note that when Rviz starts up, it will display a lot of logs, among other things potentially the warning, that the link "base_link" has an inertia specified in the URDF and that this is a problem. Do not try to change the inertia of this link in the URDF, that wont work.
 
 ## Additional things to do
 
