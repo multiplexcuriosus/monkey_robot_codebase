@@ -85,6 +85,7 @@ These instructions assume you have setup a catkin workspace.
     </joint>
   ```
 From now and I will refer to the URDF file as *monkey_robot.urdf*.
+
 3. Replace the  URDF file *monkey_complete/urdf/monkey_complete.urdf* with monkey_robot.urdf
 4. In *ws_moveit*, open a terminal and run ```catkin build monkey_complete``` to build the monkey_complete package.
 5. Source the workspace by running ```source devel/setup.bash``` in *ws_moveit*.
@@ -186,10 +187,12 @@ If you did everything right up until here, you should be able to drag around the
 3. If you haven't done so already, run ```caktin build ``` in the src folder, to build all packages. This will take about 10min (if you never build them before).
 
 ## Setup the monkey_interface ##
-1. Open your catkin ws in two different terminals and source it in both.
-2. In the first terminal run ```roslaunch <name-of-your-moveit-config> demo.launch```. Rviz should open. 
-3. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
-4. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
+
+1. Open the directory *ws_moveit/src/monkey_interface* in a terminal and run ```chmod +x monkey_interface.py``` to allow monkey_interface.py to be executed. 
+2. Open *ws_moveit* in two different terminals and source it in both.
+3. In the first terminal run ```roslaunch <name-of-your-moveit-config> demo.launch```. Rviz should open. 
+4. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
+5. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
 
 ## Use the monkey_interface ##
 Through the shell you can select one of the following actions, which I will call "modes":
