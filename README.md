@@ -59,12 +59,15 @@ export ROS_IP = <PC_IP>
 export ROS_MASTER_URI = http://<RPP_IP>:11311
 ```
 
-## Install MoveIt on the RPP
-Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the RPP. 
+## Install MoveIt on your PC
+Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the RPP. From this point onwards I am assuming you have a catkin workspace setup, to which I will refer as "ws_moveit" from now on.
+ 
  
 ## Generate a Moveit Config Package
 These instructions assume you have setup a catkin workspace.
-1. Download the URDF file "monkey_robot.urdf" from this repository. If you use a different URDF, make sure that the URDF contains the following lines below ```<robot name="NAME_OF_ROBOT">```:
+
+1. Download the folder "monkey_complete" from this repository. Place it in *ws_moveit/src*.
+2. Download the URDF file "monkey_robot.urdf" from this repository. If you use a different URDF, make sure that the URDF contains the following lines below ```<robot name="NAME_OF_ROBOT">```:
 ```xml
     <link name="world" />
     <joint name="world_to_base_link=" type="fixed">
@@ -72,15 +75,17 @@ These instructions assume you have setup a catkin workspace.
         <child link="base_link"/>
     </joint>
   ```
-  
-2. Launch the moveit setup assistant with ``` roslaunch moveit_setup_assistant setup_assistant.launch```. Note that this will only work if:
+From now and I will refer to the URDF file as "monkey_robot.urdf*.
+3. Replace the  URDF file in *monkey_complete/
+5. 2. In *ws_moveit*, open a terminal and run ```catkin build monkey_complete``` to build the monkey_complete package.
+6. Launch the moveit setup assistant with ``` roslaunch moveit_setup_assistant setup_assistant.launch```. Note that this will only work if:
 - you have installed and setup moveit according to this [tutorial](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html)
 - you have sourced your workspace with ```source devel/setup.bash```
-3. In the setup assistant, select "Create New Moveit Configuration Package"
-4. Click on "Browse" and select your URDF file 
-5. Click on "Load Files"
-6. In **Self-Collision**: Set "Sampling Density to max" and click "Generate Collision Matrix"
-7. In **Virtual Joints**: Create an entry according to the following picture:
+7. In the setup assistant, select "Create New Moveit Configuration Package"
+8. Click on "Browse" and select your URDF file 
+9. Click on "Load Files"
+10. In **Self-Collision**: Set "Sampling Density to max" and click "Generate Collision Matrix"
+11. In **Virtual Joints**: Create an entry according to the following picture:
 
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
 
