@@ -100,14 +100,17 @@ From now and I will refer to the URDF file as *monkey_robot.urdf*.
 
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
 
-12. In **Planning groups**: Create entries according to the following picture:
- 
+12. In **Planning groups**: 
+ - By clicking on "Add group" you can add new planning groups. 
+-**Important:** For the "Kinematic Solver" choose the "kdl_kinematics_plugin"
+- You don't have to modify anything else appart from adding components
+- In order to add components to the group you click on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected. Second, select the "Tip Link" e.g L_Hand_Link and press "Choose Selected".
+
+With this knowledge you can create the planning groups according to the following picture:
+
 ![planning_groups_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/bfb11fae-02b0-4fc5-a143-46e951aad534)
 
-13. In **Robot Poses**: 
-- By clicking on "Add group" you can add new planning groups. 
--**Important:** For the "Kinematic Solver" choose the "kdl_kinematics_plugin"
-- In order to add components to the group you click on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected. Second, select the "Tip Link" e.g L_Hand_Link and press "Choose Selected".
+13. In **Robot Poses**: Create entries according to the following pictures:
 
 
 ![Screenshot from 2023-06-08 13-42-08](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/229191b2-0624-47ec-8534-6de6b541d00c)
