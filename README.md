@@ -124,7 +124,7 @@ roslaunch <name-of-your-moveit-config> demo.launch
 Now you should see a window popping up containing the simulation environment Rviz. It should look like this:
 ![Screenshot from 2023-06-08 13-59-16](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/fbc231dd-3a55-407f-bff5-a6328b919ae9)
 
-Note that when Rviz starts up, it will display a lot of logs, among other things potentially the warning, that the link "base_link" has an inertia specified in the URDF and that this is a problem. Do not try to change the inertia of this link in the URDF, that wont work.
+Note that when Rviz starts up, it will display a lot of logs, among other things potentially the warning, that the link "base_link" has an inertia specified in the URDF and that this is a problem. Do not try to change the inertia of this link in the URDF, that wont work. This warning means that your URDF is missing the snippet mentioned under 2. or that the snippet contains a mistake.
 
 ## Additional things to do
 
