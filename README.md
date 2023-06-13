@@ -59,7 +59,7 @@ export ROS_IP = <PC_IP>
 export ROS_MASTER_URI = http://<RPP_IP>:11311
 ```
 
-Note that with these environment variables you must start the ROS network by running ```roscore``` on the RPP. If you dont do that the setup assistant and all other nodes you try to launch will fail because they are trying to find the ROS master but can't, since roscore wasn't run on the RPP. 
+Note that the ROS_MASTER_URI refers to the device which is the ROS master, i.e who starts and controls the ROS network. With these environment variables you must start the ROS network by running ```roscore``` on the RPP. If you dont do that the setup assistant and all other nodes you try to launch will fail because they are trying to find the ROS master but can't, since roscore wasn't run on the device whose IP was exported as ROS_MASTER_URI. 
 
 If you just want to use Rviz and not control the physical robot, just use the PC_IP in the ROS_MASTER_URI. Then the network will be started by your PC.
 
