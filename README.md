@@ -59,6 +59,10 @@ export ROS_IP = <PC_IP>
 export ROS_MASTER_URI = http://<RPP_IP>:11311
 ```
 
+Note that with these environment variables you must start the ROS network by running ```roscore``` on the RPP. If you dont do that the setup assistant and all other nodes you try to launch will fail because they are trying to find the ROS master but can't, since roscore wasn't run on the RPP. 
+
+If you just want to use Rviz and not control the physical robot, just use the PC_IP in the ROS_MASTER_URI. Then the network will be started by your PC.
+
 ## Install MoveIt on your PC
 Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the RPP. From this point onwards I am assuming you have a catkin workspace setup, to which I will refer as "ws_moveit" from now on. Note that this simply means that there is a folder in your /home directory called *ws_moveit*, in which you have executed all commands listed in the tutorial mentioned above. One command which you don't have to run is the last one of these three.
 ```
@@ -233,6 +237,13 @@ The following diagram describes the control flow of the monkey_interface.py scri
 3. In the second terminal, navigate to *monkey_ws* and source it
 4. In the second terminal, run ```sudo pigpiod``` to start the PiGPIO daemon.
 5. In the second terminal, run ```rosrun monkey_listener joint_control_listener.py``` to start the listener node
+
+## Use the joint_control node on the RPP
+1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
+2. In the first terminal run ```roscore``` to start up the ROS network
+3. In the second terminal, navigate to *monkey_ws* and source it
+4. In the second terminal, run ```sudo pigpiod``` to start the PiGPIO daemon.
+5. In the second terminal, run ```rosrun monkey_listener joint_control.py``` to start the joint_control node
 
 
 ## Useful tricks
