@@ -186,9 +186,6 @@ If you did everything right up until here, you should be able to drag around the
 2. In the first terminal run ```roslaunch <name-of-your-moveit-config> demo.launch```. Rviz should open. 
 3. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
 4. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
-5. SSH into the pi and run ```roscore```
-
-## Setup the RPP 
 
 ## Use the monkey_interface ##
 Through the shell you can select one of the following actions, which I will call "modes":
@@ -229,6 +226,13 @@ In case you didn't save the waypoint collection before the trajectory execution 
 The following diagram describes the control flow of the monkey_interface.py script:
 
 ![control_flow_all](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c0ea0a91-2c30-446e-bc22-1dbd28313763)
+
+## Setup the RPP to listen to joint_states data
+1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
+2. In the first terminal run ```roscore``` to start up the ROS network
+3. In the second terminal, navigate to *monkey_ws* and source it
+4. In the second terminal, run ```sudo pigpiod``` to start the PiGPIO daemon.
+5. In the second terminal, run ```rosrun monkey_listener joint_control_listener.py``` to start the listener node
 
 
 ## Useful tricks
