@@ -104,10 +104,16 @@ From now and I will refer to the URDF file as *monkey_robot.urdf*.
  
 ![planning_groups_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/bfb11fae-02b0-4fc5-a143-46e951aad534)
 
-13. In **Robot Poses**: Create entries according to the following pictures:
+13. In **Robot Poses**: 
+- By clicking on "Add group" you can add new planning groups. 
+-**Important:** For the "Kinematic Solver" choose the "kdl_kinematics_plugin"
+- In order to add components to the group you click on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected. Second, select the "Tip Link" e.g L_Hand_Link and press "Choose Selected".
+
+
 ![Screenshot from 2023-06-08 13-42-08](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/229191b2-0624-47ec-8534-6de6b541d00c)
 ![Screenshot from 2023-06-08 13-43-14](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/11759217-dc7c-43cf-b7c4-5f5431a7c3ce)
 ![Screenshot from 2023-06-08 13-44-13](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/43201653-b480-4239-a40e-ad5f28059e59)
+
 
 14. In **End Effectors**: Create entries according to the following picture:
 ![eef_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/67d41e35-fa33-42ad-b33a-849618700e0c)
