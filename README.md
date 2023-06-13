@@ -186,6 +186,9 @@ If you did everything right up until here, you should be able to drag around the
 2. In the first terminal run ```roslaunch <name-of-your-moveit-config> demo.launch```. Rviz should open. 
 3. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
 4. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
+5. SSH into the pi and run ```roscore```
+
+## Setup the RPP 
 
 ## Use the monkey_interface ##
 Through the shell you can select one of the following actions, which I will call "modes":
@@ -228,6 +231,8 @@ The following diagram describes the control flow of the monkey_interface.py scri
 ![control_flow_all](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c0ea0a91-2c30-446e-bc22-1dbd28313763)
 
 
+## Useful tricks
+-  If you want to deactivate a certain joint (e.g the LSH/RSH joints, see thesis) you can do that by going to the URDF file, searching the joint you want to deactivate and in his xml <limit > tage set the min and the max to the same value. Thus this joint will not be used by Rviz and Moveit.
 
 ## Necessary installs
 - Rospy message converter 
