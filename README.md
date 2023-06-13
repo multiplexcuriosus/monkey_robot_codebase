@@ -84,7 +84,7 @@ These instructions assume you have setup a catkin workspace.
         <child link="base_link"/>
     </joint>
   ```
-From now and I will refer to the URDF file as "monkey_robot.urdf*.
+From now and I will refer to the URDF file as *monkey_robot.urdf*.
 3. Replace the  URDF file *monkey_complete/urdf/monkey_complete.urdf* with monkey_robot.urdf
 4. In *ws_moveit*, open a terminal and run ```catkin build monkey_complete``` to build the monkey_complete package.
 5. Source the workspace by running ```source devel/setup.bash``` in *ws_moveit*.
