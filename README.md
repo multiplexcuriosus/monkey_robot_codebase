@@ -110,6 +110,8 @@ c. For "Group Default Planner" choose "RRT".
 
 d. Add components to the group by clicking on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected". Second, select the "Tip Link" (e.g L_Hand_Link) and press "Choose Selected".
 
+e. Add single links to a planning group by clicking "Add Links".
+
 With this knowledge you can create the planning groups according to the following picture:
 
 ![planning_groups_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/bfb11fae-02b0-4fc5-a143-46e951aad534)
