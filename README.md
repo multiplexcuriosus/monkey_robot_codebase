@@ -71,6 +71,14 @@ git clone https://github.com/ros-planning/moveit_tutorials.git -b master
 git clone https://github.com/ros-planning/panda_moveit_config.git -b noetic-devel #unnecessary
 ```
  If you run it "fatal error" will be displayed, but that is irrelevant for our purposes.
+
+## Install package responsible for data loading/saving
+The package in questin is called "Rospy message converter". You can install it with: 
+
+```
+sudo apt install ros-noetic-rospy-message-converter
+```
+Note that any other package which turns out to be missing should be installed analogously.
  
 ## Generate a Moveit Config Package
 These instructions assume you have setup a catkin workspace.
@@ -267,14 +275,6 @@ The following diagram describes the control flow of the monkey_interface.py scri
 ## Useful tricks
 -  If you want to deactivate a certain joint (e.g the LSH/RSH joints, see thesis) you can do that by going to the URDF file, searching the joint you want to deactivate and in his xml <limit > tage set the min and the max to the same value. Thus this joint will not be used by Rviz and Moveit.
 
-## Necessary installs
-- Rospy message converter 
-
-install with: 
-
-```
-sudo apt install ros-noetic-rospy-message-converter
-```
 
 
 
