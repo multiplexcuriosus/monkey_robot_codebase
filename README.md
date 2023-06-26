@@ -1,4 +1,4 @@
-# Instructions for setup and usage of control interface for monkey robot 
+# Instructions for setup and usage of control interface for robot monkey 
 
 ## Introduction
 
