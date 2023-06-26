@@ -1,8 +1,10 @@
-# Instructions for setup and usage of control interface for monkey robot created during my bachelor's thesis
+# Instructions for setup and usage of control interface for monkey robot 
 
-## Overview
-- Bachelor's thesis:  "Assembly and Programming of a Robot Monkey to Study Imitation Learning in Marmosets" (see main branch)
-- Existing documentation: The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not. For this reason, this ReadMe contains a detailed instruction on how to generate the moveit config package used during the thesis. For completeness, all other setup steps are also mentioned. 
+## Introduction
+
+This ReadMe contains instructions for the setup and usage of a control interface for a robot monkey, which I have created during my bachelor's thesis:  "Assembly and Programming of a Robot Monkey to Study Imitation Learning in Marmosets" (see main branch).
+
+The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not. For this reason, this ReadMe contains a detailed instruction on how to generate the moveit config package used during the thesis. For completeness, all other setup steps are also mentioned. 
 
 
 ## Abbreviations and explanations of some terms 
