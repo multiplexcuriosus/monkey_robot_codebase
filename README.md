@@ -101,10 +101,9 @@ From now and I will refer to the URDF file as *monkey_robot.urdf*.
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
 
 12. In **Planning groups**: 
- - By clicking on "Add group" you can add new planning groups. 
--**Important:** For the "Kinematic Solver" choose the "kdl_kinematics_plugin"
-- You don't have to modify anything else appart from adding components
-- In order to add components to the group you click on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected. Second, select the "Tip Link" e.g L_Hand_Link and press "Choose Selected".
+a. By clicking on "Add group" you can add new planning groups. 
+b. **Important:** For the "Kinematic Solver" choose the "kdl_kinematics_plugin"
+c. In order to add components to the group you click on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected. Second, select the "Tip Link" e.g L_Hand_Link and press "Choose Selected".
 
 With this knowledge you can create the planning groups according to the following picture:
 
