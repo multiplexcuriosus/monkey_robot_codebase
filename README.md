@@ -8,7 +8,7 @@
 ## Abbreviations
 - Raspberry Pi (RPP)
 
-## High level instructions
+## Index of instructions
 *More detailed install instructions follow below*
 1. Install Ubuntu 20.04 Server on the RPP.
 2. Setup a static IP on the RPP. 
@@ -73,7 +73,7 @@ git clone https://github.com/ros-planning/panda_moveit_config.git -b noetic-deve
  If you run it "fatal error" will be displayed, but that is irrelevant for our purposes.
 
 ## Install package responsible for data loading/saving
-The package in questin is called "Rospy message converter". You can install it with: 
+The package in question is called "Rospy message converter". You can install it with: 
 
 ```
 sudo apt install ros-noetic-rospy-message-converter
