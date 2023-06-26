@@ -5,21 +5,25 @@
 - Existing documentation: The appendix of the above mentioned thesis already contains a lot of the necessary instructions for the setup of the control interface. As is hinted at in section C.2.4 of the appendix of the thesis, it was not clear at the time of writing, whether the moveit config package created during the thesis would be usable on foreign machines. It turned out it is not. For this reason, this ReadMe contains a detailed instruction on how to generate the moveit config package used during the thesis. For completeness, all other setup steps are also mentioned. 
 
 
-## Abbreviations
+## Abbreviations and explanations of some terms 
 - Raspberry Pi (RPP)
+- Controller device: The device on which you want to run the simulation and interact with the robot
 
 ## Index of instructions
 *More detailed install instructions follow below*
+1. Install Ubuntu 20.04 on your controller device
 1. Install Ubuntu 20.04 Server on the RPP.
-2. Setup a static IP on the RPP. 
-3. Install ROS on the RPP. 
+2. Setup a static IP on the RPP.
+3. Install ROS on your controller device
 4. Setup the ROS Environment Variables.
 5. Install MoveIt on the RPP.
 6. Generate a Moveit Config Package.
 
+## Install Ubuntu 20.04 on your controller device
+You can get the image from [here](https://releases.ubuntu.com/20.04/)
 
 ## Install Ubuntu 20.04 Server on the RPP
-Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the Raspberry Pi (RPP). The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). The RPP Imager will offer you to include the SSID and password of a local network in the image to be flashed, which can be useful to already set at this stage.
+Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the RPP. The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). The RPP Imager will offer you to include the SSID and password of a local network in the image to be flashed, which can be useful to already set at this stage.
  
 ## Setup a static IP on the RPP
 1. SSH into the RPP
@@ -43,9 +47,14 @@ network:
                 addresses:
                     - 8.8.8.8
 ```
+
+## Install ROS on the controller device
+Follow the steps described [here](https://wiki.ros.org/noetic/Installation/Ubuntu) to install ROS on the controller device. Use *ros-noetic-desktop-full* 
  
 ## Install ROS on the RPP
-Follow the steps described [here](https://wiki.ros.org/noetic/Installation/Ubuntu). It probably suffices to install *ros-noetic-ros-base* instead of *ros-noetic-desktop-full*. The latter includes Rviz and Gazebo (simulations softwares) which are of no use on the headless RPP.
+Follow the steps described [here](https://wiki.ros.org/noetic/Installation/Ubuntu) to install ROS on the RPP.
+
+For the RPP it probably suffices to install *ros-noetic-ros-base* instead of *ros-noetic-desktop-full*. The latter includes Rviz and Gazebo (simulations softwares) which are of no use on the headless RPP.
 
 ## Setup the ROS Environment Variables
 For the RPP with IP-Address <RPP_IP> execute these commands in a terminal on the RPP.
