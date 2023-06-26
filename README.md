@@ -26,8 +26,8 @@ The appendix of the above mentioned thesis already contains most of the necessar
 12. Perform a quick test
 13. Download and build the monkey_interface
 14. Setup the monkey_interface
-15. Use the monkey_interface
-16. Setup the RPP to listen to joint_states data
+15. Setup the RPP to listen to joint_states data
+16. Use the monkey_interface
 17. Use the joint_control node on the RPP
 18. Useful tricks
 
@@ -186,7 +186,7 @@ In order to have a efficient workflow and make use of all the tools and ideas co
 
 4. Press "CTRL+S" to save the current Rviz config
 
-## 10. Modify standard kinematics config
+## 11. Modify standard kinematics config
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, a few modifications have to be made to the **Kinematics.yaml** file, which can be found in the "config" folder of your moveit-config-pkg. The file should look as follows:
 ```yaml
 monkey_left_arm:
@@ -219,16 +219,16 @@ List of changes made:
 - changed "kinematics_solver_search_resolution" to 0.01 for each planning group
 
 
-## 11. Perform a quick test
+## 12. Perform a quick test
 If you did everything right up until here, you should be able to drag around the hands of the robot quite freely around in space (of course only inside the space which is reachable by the robot and permitted by his joint limits). If you can't drag around the hands, it might help to untick and retick the "Approximate IK solutions" box. This setting seems to deactivate itself sometimes. 
 
 
-## 12. Download and build the monkey_interface 
+## 13. Download and build the monkey_interface 
 1. From this repo, download the folder "monkey_interface" and place it in the "src" folder of your catkin ws
 2. Run ```catkin build monkey_interface``` to build the package.
 3. If you haven't done so already, run ```caktin build ``` in the src folder, to build all packages. This will take about 10min (if you never build them before).
 
-## 13. Setup the monkey_interface 
+## 14. Setup the monkey_interface 
 
 1. Open the directory *ws_moveit/src/monkey_interface* in a terminal and run ```chmod +x monkey_interface.py``` to allow monkey_interface.py to be executed. 
 2. Open *ws_moveit* in two different terminals and source it in both.
@@ -236,7 +236,15 @@ If you did everything right up until here, you should be able to drag around the
 4. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
 5. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
 
-## 14. Use the monkey_interface 
+## 15. Setup the RPP to listen to joint_states data
+1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
+2. In the first terminal run ```roscore``` to start up the ROS network
+3. In the second terminal, navigate to *monkey_ws* and source it
+4. In the second terminal, run ```sudo pigpiod``` to start the PiGPIO daemon.
+5. In the second terminal, run ```rosrun monkey_listener joint_control_listener.py``` to start the listener node
+
+
+## 16. Use the monkey_interface 
 Through the shell you can select one of the following actions, which I will call "modes":
 ```
 [1]  Display the (hard coded) single pose goal
@@ -255,7 +263,7 @@ Now follows a detailed explanation of the modes:
 [2]: Same thing as 1 but for multiple poses
 [3]: Once you have selected mode 3, you are directly prompted to move the eef of your chosen planning group to the first waypoint in Rviz. Recall that the way we create movements for the arms of the robot, is that we specify a list of poses (called waypoints by me) and compute a path for a specific eef to go through those waypoints. So mode 3 will let you collect waypoints for as long as you like.
  
-**Important** Whenever you have moved the eef of the robot to a desired waypoint collection **you must manipulate the rotation of the interactive marker (blue sphere)**. This ensures that the last interactive marker position recorded by the monkey_interface node corresponds to the position of the hand. More details can be found in section 3.4 of my thesis. This means you must "rotate" the interactive marker by pulling at one of the three circles (red, green, blue). 
+**Important**: Whenever you have moved the eef of the robot to a desired waypoint collection **you must manipulate the rotation of the interactive marker (blue sphere)**. This ensures that the last interactive marker position recorded by the monkey_interface node corresponds to the position of the hand. More details can be found in section 3.4 of my thesis. This means you must "rotate" the interactive marker by pulling at one of the three circles (red, green, blue). 
 
 ![Screenshot from 2023-06-08 15-01-51](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/6f732623-7db9-4f73-82b8-45f0a5802f8f)
 
@@ -276,14 +284,10 @@ The following diagram describes the control flow of the monkey_interface.py scri
 
 ![control_flow_all](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c0ea0a91-2c30-446e-bc22-1dbd28313763)
 
-## 15. Setup the RPP to listen to joint_states data
-1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
-2. In the first terminal run ```roscore``` to start up the ROS network
-3. In the second terminal, navigate to *monkey_ws* and source it
-4. In the second terminal, run ```sudo pigpiod``` to start the PiGPIO daemon.
-5. In the second terminal, run ```rosrun monkey_listener joint_control_listener.py``` to start the listener node
 
-## 16. Use the joint_control node on the RPP
+## 17. Use the joint_control node on the RPP
+To control the motors directly (as described in the thesis appendix D) the following steps must be followed.
+
 1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
 2. In the first terminal run ```roscore``` to start up the ROS network
 3. In the second terminal, navigate to *monkey_ws* and source it
@@ -291,7 +295,7 @@ The following diagram describes the control flow of the monkey_interface.py scri
 5. In the second terminal, run ```rosrun monkey_listener joint_control.py``` to start the joint_control node
 
 
-## 17. Useful tricks
+## 18. Useful tricks
 -  If you want to deactivate a certain joint (e.g the LSH/RSH joints, see thesis) you can do that by going to the URDF file, searching the joint you want to deactivate and in his xml <limit > tage set the min and the max to the same value. Thus this joint will not be used by Rviz and Moveit.
 
 
