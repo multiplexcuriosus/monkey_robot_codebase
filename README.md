@@ -100,8 +100,9 @@ From now and I will refer to the URDF file as *monkey_robot.urdf*.
 
 ![virtual_joints_in_sa](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/d13b2786-2f2d-4cb3-a9d1-381b475a8d9a)
 
-12. In **Planning groups**: 
-a. By clicking on "Add group" you can add new planning groups.
+12. In **Planning groups**:
+
+a. Add new planning groups by clicking on "Add group".
 
 b. **Important:** For the "Kinematic Solver" choose the "kdl_kinematics_plugin"
 
