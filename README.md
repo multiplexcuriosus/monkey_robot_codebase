@@ -104,11 +104,11 @@ From now and I will refer to the URDF file as *monkey_robot.urdf*.
 
 a. Add new planning groups by clicking on "Add group".
 
-b. **Important:** For the "Kinematic Solver" choose the "kdl_kinematics_plugin".
+b. For the "Kinematic Solver" choose "kdl_kinematics_plugin".
 
-c. As "Group Default Planner" choose "RRT".
+c. For "Group Default Planner" choose "RRT".
 
-d. Add components to the group by clicking on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected. Second, select the "Tip Link" e.g L_Hand_Link and press "Choose Selected".
+d. Add components to the group by clicking on "Add Kin. Chain". First select the "Base Link" (in our case base_link) and press "Choose Selected". Second, select the "Tip Link" (e.g L_Hand_Link) and press "Choose Selected".
 
 With this knowledge you can create the planning groups according to the following picture:
 
