@@ -19,16 +19,17 @@ The appendix of the above mentioned thesis already contains most of the necessar
 5. Install ROS on the RPP
 6. Setup the ROS Environment Variables
 7. Install MoveIt on the controller device
-8. Generate a Moveit Config Package
-9. Modify standard Rviz setup
-10. Modify standard kinematics config
-11. Perform a quick test
-12. Download and build the monkey_interface
-13. Setup the monkey_interface
-14. Use the monkey_interface
-15. Setup the RPP to listen to joint_states data
-16. Use the joint_control node on the RPP
-17. Useful tricks
+8. Install package responsible for data saving/loading
+9. Generate a Moveit Config Package
+10. Modify standard Rviz setup
+11. Modify standard kinematics config
+12. Perform a quick test
+13. Download and build the monkey_interface
+14. Setup the monkey_interface
+15. Use the monkey_interface
+16. Setup the RPP to listen to joint_states data
+17. Use the joint_control node on the RPP
+18. Useful tricks
 
 ## 1. Install Ubuntu 20.04 on your controller device
 You can get the image from [here](https://releases.ubuntu.com/20.04/).
