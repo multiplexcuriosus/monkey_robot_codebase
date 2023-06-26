@@ -9,18 +9,27 @@
 - Raspberry Pi (RPP)
 - Controller device: The device on which you want to run the simulation and interact with the robot
 
-## Index of instructions
-*More detailed install instructions follow below*
-1. Install Ubuntu 20.04 on your controller device
-1. Install Ubuntu 20.04 Server on the RPP.
-2. Setup a static IP on the RPP.
-3. Install ROS on your controller device
-4. Setup the ROS Environment Variables.
-5. Install MoveIt on the RPP.
-6. Generate a Moveit Config Package.
+## Index 
+1. Install Ubuntu 20.04 on the  controller device
+2. Install Ubuntu 20.04 Server on the RPP.
+3. Setup a static IP on the RPP.
+4. Install ROS on the controller device
+5. Install ROS on the RPP
+6. Setup the ROS Environment Variables.
+7. Install MoveIt on the RPP.
+8. Generate a Moveit Config Package.
+9. Modify standard Rviz setup
+10. Modify standard kinematics config
+11. Perform a quick test
+12. Download and build the monkey_interface
+13. Setup the monkey_interface
+14. Use the monkey_interface
+15. Setup the RPP to listen to joint_states data
+16. Use the joint_control node on the RPP
+17. Useful tricks
 
 ## Install Ubuntu 20.04 on your controller device
-You can get the image from [here](https://releases.ubuntu.com/20.04/)
+You can get the image from [here](https://releases.ubuntu.com/20.04/).
 
 ## Install Ubuntu 20.04 Server on the RPP
 Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the RPP. The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). The RPP Imager will offer you to include the SSID and password of a local network in the image to be flashed, which can be useful to already set at this stage.
@@ -72,8 +81,8 @@ Note that the ROS_MASTER_URI refers to the device which is the ROS master, i.e w
 
 If you just want to use Rviz and not control the physical robot, just use the PC_IP in the ROS_MASTER_URI. Then the network will be started by your PC.
 
-## Install MoveIt on your PC
-Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the RPP. From this point onwards I am assuming you have a catkin workspace setup, to which I will refer as "ws_moveit" from now on. Note that this simply means that there is a folder in your /home directory called *ws_moveit*, in which you have executed all commands listed in the tutorial mentioned above. One command which you don't have to run is the last one of these three.
+## Install MoveIt on the controller device
+Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the controller device. From this point onwards I am assuming you have a catkin workspace setup, to which I will refer as "ws_moveit" from now on. Note that this simply means that there is a folder in your /home directory called *ws_moveit*, in which you have executed all commands listed in the tutorial mentioned above. One command which you don't have to run is the last one of these three.
 ```
 cd ~/ws_moveit/src
 git clone https://github.com/ros-planning/moveit_tutorials.git -b master
@@ -81,7 +90,7 @@ git clone https://github.com/ros-planning/panda_moveit_config.git -b noetic-deve
 ```
  If you run it "fatal error" will be displayed, but that is irrelevant for our purposes.
 
-## Install package responsible for data loading/saving
+## Install package responsible for data saving/loading
 The package in question is called "Rospy message converter". You can install it with: 
 
 ```
@@ -163,9 +172,7 @@ Now you should see a window popping up containing the simulation environment Rvi
 
 Note that when Rviz starts up, it will display a lot of logs, among other things potentially the warning, that the link "base_link" has an inertia specified in the URDF and that this is a problem. Do not try to change the inertia of this link in the URDF, that wont work. This warning means that your URDF is missing the snippet mentioned under 2. or that the snippet contains a mistake.
 
-## Additional things to do
-
-### Modifications of standard Rviz setup
+## Modify standard Rviz setup
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, the following modifications have to be made inside of Rviz and saved.
 1. In the "Displays" panel, click on "Add". In the then appearing panel (named "Rviz"), order the visualizations "By display type", select "MarkerArray" and click "Ok". 
 
@@ -176,7 +183,7 @@ In order to have a efficient workflow and make use of all the tools and ideas co
 
 4. Press "CTRL+S" to save the current Rviz config
 
-### Modifications of standard kinematics config
+## Modify standard kinematics config
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, a few modifications have to be made to the **Kinematics.yaml** file, which can be found in the "config" folder of your moveit-config-pkg. The file should look as follows:
 ```yaml
 monkey_left_arm:
@@ -209,16 +216,16 @@ List of changes made:
 - changed "kinematics_solver_search_resolution" to 0.01 for each planning group
 
 
-### Quick test 
+## Perform a quick test
 If you did everything right up until here, you should be able to drag around the hands of the robot quite freely around in space (of course only inside the space which is reachable by the robot and permitted by his joint limits). If you can't drag around the hands, it might help to untick and retick the "Approximate IK solutions" box. This setting seems to deactivate itself sometimes. 
 
 
-## Download and build the monkey_interface ##
+## Download and build the monkey_interface 
 1. From this repo, download the folder "monkey_interface" and place it in the "src" folder of your catkin ws
 2. Run ```catkin build monkey_interface``` to build the package.
 3. If you haven't done so already, run ```caktin build ``` in the src folder, to build all packages. This will take about 10min (if you never build them before).
 
-## Setup the monkey_interface ##
+## Setup the monkey_interface 
 
 1. Open the directory *ws_moveit/src/monkey_interface* in a terminal and run ```chmod +x monkey_interface.py``` to allow monkey_interface.py to be executed. 
 2. Open *ws_moveit* in two different terminals and source it in both.
@@ -226,7 +233,7 @@ If you did everything right up until here, you should be able to drag around the
 4. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
 5. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
 
-## Use the monkey_interface ##
+## Use the monkey_interface 
 Through the shell you can select one of the following actions, which I will call "modes":
 ```
 [1]  Display the (hard coded) single pose goal
