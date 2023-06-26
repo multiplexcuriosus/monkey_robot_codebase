@@ -33,10 +33,10 @@ The appendix of the above mentioned thesis already contains most of the necessar
 ## 1. Install Ubuntu 20.04 on your controller device
 You can get the image from [here](https://releases.ubuntu.com/20.04/).
 
-## Install Ubuntu 20.04 Server on the RPP
+## 2. Install Ubuntu 20.04 Server on the RPP
 Use the [Raspberry Pi Imager](https://www.raspberrypi.com/software/) to flash a Ubuntu 20.04 Server Distribution to the RPP. The image used during the thesis can be found [here](https://old-releases.ubuntu.com/releases/20.04/). The RPP Imager will offer you to include the SSID and password of a local network in the image to be flashed, which can be useful to already set at this stage.
  
-## Setup a static IP on the RPP
+## 3. Setup a static IP on the RPP
 1. SSH into the RPP
 2. Navigate to */etc/netplan*
 3. Add a file with the following content to this directory:
@@ -59,15 +59,15 @@ network:
                     - 8.8.8.8
 ```
 
-## Install ROS on the controller device
+## 4. Install ROS on the controller device
 Follow the steps described [here](https://wiki.ros.org/noetic/Installation/Ubuntu) to install ROS on the controller device. Use *ros-noetic-desktop-full* 
  
-## Install ROS on the RPP
+## 5. Install ROS on the RPP
 Follow the steps described [here](https://wiki.ros.org/noetic/Installation/Ubuntu) to install ROS on the RPP.
 
 For the RPP it probably suffices to install *ros-noetic-ros-base* instead of *ros-noetic-desktop-full*. The latter includes Rviz and Gazebo (simulations softwares) which are of no use on the headless RPP.
 
-## Setup the ROS Environment Variables
+## 6. Setup the ROS Environment Variables
 For the RPP with IP-Address <RPP_IP> execute these commands in a terminal on the RPP.
 ```
 export ROS_IP = <RPP_IP>
@@ -83,7 +83,7 @@ Note that the ROS_MASTER_URI refers to the device which is the ROS master, i.e w
 
 If you just want to use Rviz and not control the physical robot, just use the PC_IP in the ROS_MASTER_URI. Then the network will be started by your PC.
 
-## Install MoveIt on the controller device
+## 7. Install MoveIt on the controller device
 Follow the instructions [here](https://ros-planning.github.io/moveit_tutorials/doc/getting_started/getting_started.html) to install MoveIt on the controller device. From this point onwards I am assuming you have a catkin workspace setup, to which I will refer as "ws_moveit" from now on. Note that this simply means that there is a folder in your /home directory called *ws_moveit*, in which you have executed all commands listed in the tutorial mentioned above. One command which you don't have to run is the last one of these three.
 ```
 cd ~/ws_moveit/src
@@ -92,7 +92,7 @@ git clone https://github.com/ros-planning/panda_moveit_config.git -b noetic-deve
 ```
  If you run it "fatal error" will be displayed, but that is irrelevant for our purposes.
 
-## Install package responsible for data saving/loading
+## 8. Install package responsible for data saving/loading
 The package in question is called "Rospy message converter". You can install it with: 
 
 ```
@@ -100,7 +100,7 @@ sudo apt install ros-noetic-rospy-message-converter
 ```
 Note that any other package which turns out to be missing should be installed analogously.
  
-## Generate a Moveit Config Package
+## 9. Generate a Moveit Config Package
 These instructions assume you have setup a catkin workspace.
 
 1. Download the folder "monkey_complete" from this repository. Place it in *ws_moveit/src*.
@@ -185,7 +185,7 @@ In order to have a efficient workflow and make use of all the tools and ideas co
 
 4. Press "CTRL+S" to save the current Rviz config
 
-## Modify standard kinematics config
+## 10. Modify standard kinematics config
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, a few modifications have to be made to the **Kinematics.yaml** file, which can be found in the "config" folder of your moveit-config-pkg. The file should look as follows:
 ```yaml
 monkey_left_arm:
@@ -218,16 +218,16 @@ List of changes made:
 - changed "kinematics_solver_search_resolution" to 0.01 for each planning group
 
 
-## Perform a quick test
+## 11. Perform a quick test
 If you did everything right up until here, you should be able to drag around the hands of the robot quite freely around in space (of course only inside the space which is reachable by the robot and permitted by his joint limits). If you can't drag around the hands, it might help to untick and retick the "Approximate IK solutions" box. This setting seems to deactivate itself sometimes. 
 
 
-## Download and build the monkey_interface 
+## 12. Download and build the monkey_interface 
 1. From this repo, download the folder "monkey_interface" and place it in the "src" folder of your catkin ws
 2. Run ```catkin build monkey_interface``` to build the package.
 3. If you haven't done so already, run ```caktin build ``` in the src folder, to build all packages. This will take about 10min (if you never build them before).
 
-## Setup the monkey_interface 
+## 13. Setup the monkey_interface 
 
 1. Open the directory *ws_moveit/src/monkey_interface* in a terminal and run ```chmod +x monkey_interface.py``` to allow monkey_interface.py to be executed. 
 2. Open *ws_moveit* in two different terminals and source it in both.
@@ -235,7 +235,7 @@ If you did everything right up until here, you should be able to drag around the
 4. In the second terminal run ```rosrun monkey_interface monkey_interface.py```
 5. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
 
-## Use the monkey_interface 
+## 14. Use the monkey_interface 
 Through the shell you can select one of the following actions, which I will call "modes":
 ```
 [1]  Display the (hard coded) single pose goal
@@ -275,14 +275,14 @@ The following diagram describes the control flow of the monkey_interface.py scri
 
 ![control_flow_all](https://github.com/multiplexcuriosus/monkey_robot_codebase/assets/50492539/c0ea0a91-2c30-446e-bc22-1dbd28313763)
 
-## Setup the RPP to listen to joint_states data
+## 15. Setup the RPP to listen to joint_states data
 1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
 2. In the first terminal run ```roscore``` to start up the ROS network
 3. In the second terminal, navigate to *monkey_ws* and source it
 4. In the second terminal, run ```sudo pigpiod``` to start the PiGPIO daemon.
 5. In the second terminal, run ```rosrun monkey_listener joint_control_listener.py``` to start the listener node
 
-## Use the joint_control node on the RPP
+## 16. Use the joint_control node on the RPP
 1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
 2. In the first terminal run ```roscore``` to start up the ROS network
 3. In the second terminal, navigate to *monkey_ws* and source it
@@ -290,7 +290,7 @@ The following diagram describes the control flow of the monkey_interface.py scri
 5. In the second terminal, run ```rosrun monkey_listener joint_control.py``` to start the joint_control node
 
 
-## Useful tricks
+## 17. Useful tricks
 -  If you want to deactivate a certain joint (e.g the LSH/RSH joints, see thesis) you can do that by going to the URDF file, searching the joint you want to deactivate and in his xml <limit > tage set the min and the max to the same value. Thus this joint will not be used by Rviz and Moveit.
 
 
