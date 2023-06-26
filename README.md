@@ -286,7 +286,7 @@ The following diagram describes the control flow of the monkey_interface.py scri
 
 
 ## 17. Use the joint_control node on the RPP
-To control the motors directly (as described in the thesis appendix D) the following steps must be followed.
+To control the motors directly (as described in appendix D of the thesis) the following steps must be followed.
 
 1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
 2. In the first terminal run ```roscore``` to start up the ROS network
