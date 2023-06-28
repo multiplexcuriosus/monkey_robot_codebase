@@ -175,7 +175,7 @@ Now you should see a window popping up containing the simulation environment Rvi
 
 Note that when Rviz starts up, it will display a lot of logs, among other things potentially the warning, that the link "base_link" has an inertia specified in the URDF and that this is a problem. Do not try to change the inertia of this link in the URDF, that wont work. This warning means that your URDF is missing the snippet mentioned under 2. or that the snippet contains a mistake.
 
-## 10. Modify standard Rviz setup
+## 10. Modify the standard Rviz setup
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, the following modifications have to be made inside of Rviz and saved.
 1. In the "Displays" panel, click on "Add". In the then appearing panel (named "Rviz"), order the visualizations "By display type", select "MarkerArray" and click "Ok". 
 
@@ -186,7 +186,7 @@ In order to have a efficient workflow and make use of all the tools and ideas co
 
 4. Press "CTRL+S" to save the current Rviz config
 
-## 11. Modify standard kinematics config
+## 11. Modify the standard kinematics config
 In order to have a efficient workflow and make use of all the tools and ideas conceived during the thesis, a few modifications have to be made to the **Kinematics.yaml** file, which can be found in the "config" folder of your moveit-config-pkg. The file should look as follows:
 ```yaml
 monkey_left_arm:
