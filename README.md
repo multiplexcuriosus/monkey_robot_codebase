@@ -237,11 +237,23 @@ If you did everything right up until here, you should be able to drag around the
 5. Arrange all windwos such that you have Rviz on the left side of your screen and the second terminal on the right side (having multiple screens helps).
 
 ## 15. Setup the RPP to listen to joint_states data
+It is important that you launch demo.launch and joint_control_listener.py in a certain order. Namely, you have to launch demo.launch (see 9.19) **before** you run joint_control_listener.py. The launch process of demo.launch includes the publishing of the joint_states as they are specified in the URDF. This corresponds to a pose of the robot where he stretches both arms horizontally and the head vertically. Even though the demo.launch launch process at some point loads the correct default poses (arms hanging, head looking forward), it seems impossible to get rid of this "jesus" like pose which he publishes at the very beginning of the launch process. 
+
+Another reason why it is important to use the order proposed above, is that the mentioned jesus pose is executed extremly fast on the robot, potentially altering the thread tension and/or turnbuckles configuration. 
+
+And also it is just annoying. 
+
+To run the joint_control_listener.py script do the following:
+
 1. SSH into the RPP (```ssh pi@<RPP_IP```) in two different terminals
 2. In the first terminal run ```roscore``` to start up the ROS network
 3. In the second terminal, navigate to *monkey_ws* and source it
 4. In the second terminal, run ```sudo pigpiod``` to start the PiGPIO daemon.
 5. In the second terminal, run ```rosrun monkey_listener joint_control_listener.py``` to start the listener node
+
+Note that the default position of the robot after the demo launch is determined by the planning group poses specified in the Setup Assistant. Namely, each planning group will be set to the first pose specified for it in the Setup Assistant. 
+
+The xml code in which the poses are saved can be found in the srdf file in the config folder of your moveit config package. It is sometimes easier to alter the poses and planning groups there instead of the setup assistant.
 
 
 ## 16. Use the monkey_interface 
