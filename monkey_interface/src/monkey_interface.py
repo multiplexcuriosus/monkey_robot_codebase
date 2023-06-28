@@ -1,9 +1,34 @@
 #!/usr/bin/env python3
+
+# Description =============================================================================================
+'''
+This script was written during and for the bachelor thesis "Assembly and Programming of a
+Robot Monkey to Study Imitation Learning in Marmosets". 
+
+It is intended to be used with the robot monkey assembled during the mentioned thesis. 
+Once all setup steps as described on the ReadMe on the source repository and in the appendix of the thesis have been completed, 
+this script can control the mentioned robot monkey or a different robot. 
+
+This script interfaces the moveit move_group_python_interface, whose class reference can be found here:
+https://docs.ros.org/en/jade/api/moveit_commander/html/classmoveit__commander_1_1move__group_1_1MoveGroupCommander.html
+(Note: At time of writing docs.ros.org is unreachable)
+
+It was derived from the move_group_python_interface_tutorial which can be found here:
+https://github.com/ros-planning/moveit_tutorials/blob/master/doc/move_group_python_interface/scripts/move_group_python_interface_tutorial.py
+
+
+Author: Jaú Gretler
+E-Mail: gretleja@ethz.ch
+Last changed: 28.6.23
+
+'''
+
 # imports ==================================================================================================
 import sys
 import os
 import copy
-import rospy
+import pathlib
+import rospy #pyright: ignore
 import colorsys
 import moveit_commander #pyright: ignore
 import moveit_msgs.msg #pyright: ignore
@@ -93,9 +118,6 @@ class MoveGroupInterface(object):
 
         # Query planning group from user
         target_planning_group_name = "monkey_left_arm" # Or input("Please specify planning group: ")
-
-        # Move planning group to default state (TODO)
-        #self.go_to_all_def_pos("")
         
         # Setup move_group handle
         move_group = moveit_commander.MoveGroupCommander(target_planning_group_name)
@@ -172,37 +194,6 @@ class MoveGroupInterface(object):
 
         #print("len markers after callback body: ",len(self.markerArray.markers))
 
-
-
-    # TODO
-    def go_to_all_def_pos(self,planning_group):
-        move_group = self.move_group
-        joint_goal = move_group.get_current_joint_values()
-        if planning_group=="all":
-            joint_goal[0] = -1.571
-            joint_goal[1] = -1.5
-            joint_goal[2] = -1.571 
-            joint_goal[3] = 0 
-            joint_goal[4] = 1.571 
-            joint_goal[5] = 0 
-        elif planning_group =="left_arm":
-            joint_goal[0] = -1.571
-            joint_goal[1] = -1.5
-            joint_goal[2] = -1.571 
-            joint_goal[3] = 0 
-            joint_goal[4] = 1.571 
-            joint_goal[5] = 0 
-
-  
-        # The go command can be called with joint values, poses, or without any
-        # parameters if you have already set the pose or joint target for the group
-        move_group.go(joint_goal, wait=True)
-        
-        move_group.stop() # Calling ``stop()`` ensures that there is no residual movement
-
-        current_joints = move_group.get_current_joint_values() # For testing:
-        return all_close(joint_goal, current_joints, 0.01)
-
     # Set joint goal for eef of move_group, execute trajectory, check if target and final pose of eef are within tolerance [Adapter from tutorial]
     def go_to_joint_goal(self):
         # Instantiate joint_state object
@@ -218,7 +209,7 @@ class MoveGroupInterface(object):
         current_joints = self.move_group.get_current_joint_values()
         return all_close(joint_goal, current_joints, 0.01)
 
-    # Create a (visual) marker for a pose
+    # Create a (visual) marker for a pose 
     def createMarker(self,marker_pose,_ns):
         m = Marker()
         m.header.frame_id = "base_link"
@@ -251,7 +242,7 @@ class MoveGroupInterface(object):
             r = 1.0
             g = 0.0
             b = 1.0
-        elif _ns == "collected_waypoint": # normal waypoint
+        elif _ns == "collected_waypoint" or _ns == "hard_coded_waypoint": 
             # light blue
             r = 0.0
             g = 1.0
@@ -377,9 +368,10 @@ class Utils:
         ans = input("Do you want to save these waypoints? [yes | Enter]")
         if ans == "yes":
             # Query target json file name (without .json ending)
-            desired_filename = input("Please specify an (unused) filename: ")
+            desired_filename = input("Please specify an (unused) filename without file type: ")
             # Consctruct path name
-            path_name = '/home/jau/ws_moveit4/' + desired_filename + '.json'
+            path_to_current_dir = str(pathlib.Path().resolve()) # The path gets saved in the moveit workspace top folder
+            path_name = path_to_current_dir + "/" + desired_filename + '.json' 
             # Convert json poseArray to json
             json_pose_array = json_message_converter.convert_ros_message_to_json(pa)
             # Dump json data into json file
@@ -407,7 +399,7 @@ class Utils:
         pa.poses = [w1,w2,w3]
         # Add markers for the created waypoints
         for w in pa.poses:
-            self.iface.createMarker(w,'hc_waypoint')
+            self.iface.createMarker(w,'hard_coded_waypoint')
         # Publish the markerArray containing waypoint markers
         self.iface.markerArrayPub.publish(self.iface.markerArray)
         # Query execution
@@ -418,13 +410,13 @@ class Utils:
         # Get default pose of current end effector
         def_pose = self.iface.eef_def_pose
         # Create marker for default pose
-        self.iface.createMarker(def_pose,'def pose')
+        self.iface.createMarker(def_pose,"hard_coded_waypoint")
         # Create target pose
         pose_goal = copy.deepcopy(def_pose)
         pose_goal.position.z += 0.05
         pose_goal.position.y += 0.07
         # Create marker for target pose
-        self.iface.createMarker(pose_goal,"single pose")
+        self.iface.createMarker(pose_goal,"hard_coded_waypoint")
         # Publish marker array containing def and target pose
         self.iface.markerArrayPub.publish(self.iface.markerArray)
         # Query planning and execution of single pose goal
@@ -437,7 +429,7 @@ class Utils:
         # Query planning of cartesian path
         execute_cart_path_goal_dec = input("Do you want to plan a cart. path from the waypoints? [yes | Enter]")
         if execute_cart_path_goal_dec == "yes":
-            eef_step_size = 1.0 # 1m -> no interpolation, cartesian path will have as many points as pose vector in iface (?) (TODO)
+            eef_step_size = 1.0 # 1m -> no interpolation, cartesian path will have as many points as pose vector in iface 
             # Plan a path
             (plan, suc_frac) = self.iface.move_group.compute_cartesian_path(col_pa.poses, float(eef_step_size), 0.0) # last argument: jump_threshold -> not used
             # Inform user of success fraction
@@ -461,7 +453,8 @@ class Utils:
     # Query the user for the name of json file containing a poseArray, then query saving of cart. path, then query execution of cart. path
     def loadWaypointsFromJSON(self):
         file_name = input("Please input name of json file to load: ")
-        path_name = '/home/jau/ws_moveit4/' + file_name + '.json' #TODO: Parametrize folder where saved file lives
+        path_to_current_dir = str(pathlib.Path().resolve()) # The path gets loaded from the moveit workspace top folder
+        path_name = path_to_current_dir + "/" + file_name + '.json' 
         with open(path_name, 'rb') as f:
                 self.appending = True
                 # Get poseArray data from json object
@@ -504,7 +497,8 @@ class Utils:
                         # Query decision to plan car. path
                         self.queryCPP(loaded_pose_array)
 
-    # Query a valid 'mode' from the user, where mode is one of the scripts functionalities {single pose goal, collecting waypoints,loading and editing waypoints, exit}
+    # Query a valid 'mode' from the user, where mode is one of the scripts functionalities: 
+    # {single pose goal, hardcoded trajectory,  collecting waypoints,loading and editing waypoints, exit}
     def queryValidMode(self):
         print("")
         print("What do you want to do? : ")
@@ -533,7 +527,7 @@ class Utils:
         os.system('clear') # Clear terminal 
         print("")
         print("----------------------------------------------------------")
-        print("Monkey MoveGroup Interface")
+        print("Monkey Interface")
         print("----------------------------------------------------------")
 
 
