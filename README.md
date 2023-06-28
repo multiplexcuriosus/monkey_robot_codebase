@@ -21,8 +21,8 @@ The appendix of the above mentioned thesis already contains most of the necessar
 7. Install MoveIt on the controller device
 8. Install package responsible for data saving/loading
 9. Generate a Moveit Config Package
-10. Modify standard Rviz setup
-11. Modify standard kinematics config
+10. Modify the standard Rviz setup
+11. Modify the standard kinematics config
 12. Perform a quick test
 13. Download and build the monkey_interface
 14. Setup the monkey_interface
